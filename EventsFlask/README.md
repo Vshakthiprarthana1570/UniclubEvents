@@ -1,4 +1,4 @@
-# flask-example
+# Flask Website developed to explore all the clubs of CEG
 
 
 The main purpose is to introduce how to implement the essential elements in web application with Flask, including
