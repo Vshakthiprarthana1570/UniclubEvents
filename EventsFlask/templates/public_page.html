@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block page_title %}Public Page{% endblock %}
+{% block body %}
+    {{ super() }}
+    <section style="background:url('/static/assets/img/events.jpg') top center;"  id="services" class="services">
+    {% if images %}
+      <!--  <h3>Your Images</h3>
+        <table class="table small">
+            <thead>
+                <tr>
+                  <th>Image ID</th>
+                  <th>Timestamp</th>
+                  <th>Image Name</th>
+                </tr>
+            </thead>-->
+           
+              <div class="container" data-aos="fade-up">
+          <div class="row">
+            {% for name in images %}
+                  <!--  <tr>
+                       <<td> {{ name[0] }} </td>
+                       <td> {{ name[1] }} </td>
+                       <td>  {{ name[2] }}</td>
+
+                       <td> <img src=""> </td>
+                    </tr>-->
+                   
+                      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="icon-box">
+                          <h4><a href="{{ url_for('display_image', filename=name[0]+ '-' +name[2]) }}">CLICK HERE TO ZOOM IN DETAILS</a></h4>
+                          <img src="{{ url_for('display_image', filename=name[0]+'-'+name[2]) }}" class="img-fluid" alt="">
+                          <p>{{name [3]}}</p>
+                        </div>
+                      </div>
+                  
+               {% endfor %}
+
+              </div>
+            </div>
+ 
+           
+      <!--  </table>-->
+    {% endif %}
+  </section>
+{% endblock %}

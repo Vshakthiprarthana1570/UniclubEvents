@@ -1,0 +1,122 @@
+
+<html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.united.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link href="{{ url_for('static',filename='assets/img/favicon.png')}}" rel="icon">
+  <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+   Vendor CSS Files -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/aos/aos.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" >
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css')}}" >
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/glightbox/css/glightbox.min.css')}}" >
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.css')}}">
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+<title>Flask Example</title>
+
+<!--<nav class="navbar navbar-inverse">
+
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Flask Example</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li><a href="{{ url_for('FUN_root') }}">Home</a></li>
+            <li><a href="{{ url_for('FUN_public') }}">Events</a></li>
+            {% if session.get("current_user", None) != None %}
+	       <li><a href="{{ url_for('FUN_private') }}">CREATE POST</a></li>
+	    {% endif%}
+            {% if session.get("current_user", None) == "ADMIN" %}
+	      <li><a href="{{ url_for('FUN_admin') }}">Admin Dashboard</a></li>
+	    {% endif %}
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+        {% if session.get("current_user", None) == None %}
+            <a href="#loginform">Club login</a>
+               
+        {% else %}
+        <li>
+              <a><b>{{ session.get("current_user") }}</b></a></li>
+              <li><a href="{{ url_for('FUN_logout') }}"><b><u>Logout</u></b></a>
+          </li>
+        {% endif %}
+        </ul>
+        </div>
+                        
+    </div>
+    </nav>-->
+    
+  <body> <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+  
+      <h1 class="logo me-auto me-lg-0"><a href="index.html"><span></span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+  
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{{ url_for('FUN_root') }}">Home</a></li>
+          <!--<li><a class="nav-link scrollto" href="#about">About</a></li>-->
+          <li><a class="nav-link scrollto " href="#services">Clubs</a></li>
+          <li><a class="nav-link scrollto " href="{{ url_for('FUN_public') }}">Events</a></li>
+          {% if session.get("current_user", None) != None %}
+          <li><a class="nav-link scrollto " href="{{ url_for('FUN_private') }}">CREATE POST</a></li>
+       {% endif%}
+             {% if session.get("current_user", None) == "ADMIN" %}
+         <li><a class="nav-link scrollto " href="{{ url_for('FUN_admin') }}">Admin Dashboard</a></li>
+       {% endif %}
+    
+            {% if session.get("current_user", None) == None %}
+                    <form action="/login" method="post" class="navbar-form navbar-right">
+                        <div class="form-group">
+                          <input type="text" name="id" placeholder="User Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" name="pw" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Log In</button>
+                    </form>
+            {% else %}
+            <li>
+                  <a><b>{{ session.get("current_user") }}</b></a></li>
+                  <li><a href="{{ url_for('FUN_logout') }}"><b><u>Logout</u></b></a>
+              </li>
+            {% endif %}
+            
+          {% if session.get("current_user", None) == "ADMIN" %}
+      <li><a class="nav-link scrollto" href="{{ url_for('FUN_admin') }}">Admin Dashboard</a></li>
+    {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->{% block body %}{% endblock %}</body>
+
+
+
+<script src="{{ url_for('static',filename='assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/glightbox/js/glightbox.min.js')}}" ></script>
+  <script src="{{ url_for('static',filename='assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/php-email-form/validate.js')}}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/purecounter/purecounter.js')}}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+
+  <script src="{{ url_for('static',filename='assets/js/main.js')}}"></script>
+</html>
